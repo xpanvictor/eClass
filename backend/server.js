@@ -25,8 +25,7 @@ app.get('/', (req, res)=>{
 
 // From req params, render for that particular room
 app.use('/:roomId', (req, res)=>{
-    res.send(req.params.roomId)
-    // res.render('room', {roomId: req.params.roomId})
+    res.render('room', {roomId: req.params.roomId})
 })
 
 io.on('connection', (socket)=>{
