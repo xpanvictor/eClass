@@ -25,7 +25,7 @@ app.get('/', (req, res)=>{
 
 // From req params, render for that particular room
 app.use('/:roomId', (req, res)=>{
-    res.render('s')
+    res.render('s.ejs')
     // res.render('room', {roomId: req.params.roomId})
 })
 
