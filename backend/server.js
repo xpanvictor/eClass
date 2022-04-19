@@ -20,12 +20,11 @@ app.use('/peerjs', peerServer)
 
 // Redirect to a particular room
 app.get('/', (req, res)=>{
-    res.send('Hello heroku shit')
-    // res.redirect(`${uuid4()}`)
+    res.redirect(`${uuid4()}`)
 })
 
 // From req params, render for that particular room
-app.get('/:roomId', (req, res)=>{
+app.use('/:roomId', (req, res)=>{
     res.render('room', {roomId: req.params.roomId})
 })
 
