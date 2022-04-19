@@ -1,0 +1,19 @@
+{
+  "name": "eclass",
+  "version": "1.0.0",
+  "description": "\"The complete package\"",
+  "main": "index.js",
+  "scripts": {
+    "start:server": "node ./backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xpanvictor/eClass.git"
+  },
+  "author": "Xpan and Dubjay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xpanvictor/eClass/issues"
+  },
+  "homepage": "https://github.com/xpanvictor/eClass#readme"
+}
