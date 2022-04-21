@@ -61,8 +61,8 @@ function Navbar() {
           onClick={() => setOpen(!open)}
           className={
             open
-              ? "md:hidden mb-48 p-1 rounded-full hover:bg-indigo-400 transition-colors duration-200"
-              : "md:hidden p-1 rounded-full hover:bg-indigo-400 transition-colors duration-200"
+              ? "md:hidden mb-48 p-1 rounded-full hover:bg-slate-500 transition-colors duration-200"
+              : "md:hidden p-1 rounded-full hover:bg-slate-500 transition-colors duration-200"
           }
           height={30}
         />
@@ -73,7 +73,7 @@ function Navbar() {
           to="/"
           className={
             path === "/"
-              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-t-2"
+              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900  drop-shadow-md scale-150"
               : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
           }
         >
@@ -83,7 +83,7 @@ function Navbar() {
           to={"/assigned"}
           className={
             path === "/assigned"
-              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-t-2"
+              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900  drop-shadow-md scale-150"
               : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
           }
         >
@@ -93,7 +93,7 @@ function Navbar() {
           to={"/classes"}
           className={
             path === "/classes"
-              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-t-2"
+              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900  drop-shadow-md scale-150"
               : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
           }
         >
@@ -103,7 +103,7 @@ function Navbar() {
           to={"/dashboard"}
           className={
             path === "/dashboard"
-              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-t-2"
+              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900  drop-shadow-md scale-150"
               : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
           }
         >

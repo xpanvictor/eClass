@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Router, useLocation } from "react-router-dom";
-import { Route, Routes, Link } from "react-router-dom";
+import React from "react";
+
+import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -11,7 +11,7 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="bg-gradient-to-br from-black to-[#384E8D]">
+    <div className="bg-gradient-to-br from-black to-[#384E8D] h-screen">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
