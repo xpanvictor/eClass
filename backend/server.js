@@ -3,14 +3,16 @@ require('dotenv').config();
 const express = require('express')
 const app = express()
 const server = require('http').Server(app)
-const { v4: uuid4 } = require('uuid')
-const { Server } = require('socket.io')
+const io = require("socket.io")(server, {
+  cors: {
+    origin: '*'
+  }
+});
 const { ExpressPeerServer } = require('peer')
 
 const peerServer = ExpressPeerServer(server, {
     debug: true
 })
-const io = new Server(server)
 
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
@@ -20,21 +22,27 @@ app.use('/peerjs', peerServer)
 
 // Redirect to a particular room
 app.get('/', (req, res)=>{
-    res.redirect(`${uuid4()}`)
+    res.render('home')
 })
 
 // From req params, render for that particular room
 app.use('/:roomId', (req, res)=>{
-    res.render('s.ejs')
-    // res.render('room', {roomId: req.params.roomId})
+    res.render('room', {roomId: req.params.roomId})
 })
 
-io.on('connection', (socket)=>{
-    socket.on('joined', (roomId, userId)=>{
-        socket.join(roomId);
-        socket.to(roomId).broadcast.emit('user-joined', userId)
-    })
-})
+
+io.on("connection", (socket) => {
+    socket.on("join-room", (roomId, userId) => {
+      socket.join(roomId);
+      console.log(userId)
+      socket.broadcast.emit("user-connected", userId);
+      socket.on("left", (id)=>{
+        console.log('left', id)
+        socket.broadcast.emit("user-left", id)
+      })
+    });
+  });
+  
 
 
 const PORT = process.env.PORT || 3001;
