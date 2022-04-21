@@ -8,9 +8,14 @@ function Discussion() {
   const [sender, setSender] = useState(false);
   const sendMessage = (e) => {
     e.preventDefault();
-    setMessages([...messages, newMessage]);
-    setSender(true);
-    setNewMessage("");
+    const regexp = "/^S*$/";
+    if (newMessage === "") {
+      alert("Type Something");
+    } else {
+      setMessages([...messages, newMessage]);
+      setSender(true);
+      setNewMessage("");
+    }
   };
   return (
     <div className="rounded-md bg-gradient-to-br from-[#0B0C0F] to-[#2A3555] md:min-w-[500px] p-5 pb-10 shadow-lg drop-shadow-lg h-[80vh] ">
