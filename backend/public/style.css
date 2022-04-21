@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --main-darklg: #164c70;
+  --main-dark: #161d29;
+  --primary-color: #137f86;
+  --main-light: #eeeeee;
+  font-family: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vh;
+  position: relative;
+  width: 100%;
+  background-color: var(--main-darklg);
+}
+
+.logo > h3 {
+  color: var(--main-light);
+}
+
+.main {
+  overflow: hidden;
+  height: 92vh;
+  display: flex;
+}
+
+.main__left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-test {
+  overflow: hidden;
+  height: 92vh;
+  display: flex;
+  background-color: var(--primary-color);
+  flex-direction: column;
+}
+
+.test-group {
+  background-color: var(--main-dark);
+  width: 70%;
+  padding: 1rem;
+  margin: 1rem auto;
+  height: fit-content;
+}
+
+.test-group > a {
+  text-decoration: none;
+  text-decoration-line: none;
+}
+
+.test {
+  margin: 3px 0;
+  border: 1px solid var(--main-darklg);
+  color: var(--main-light);
+}
+
+.videos__group {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--main-dark);
+}
+
+#video-home {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+}
+
+.mine {
+  position: absolute;
+  top: 10%;
+  right: 3%;
+  height: 100px;
+  width: 100px;
+}
+
+video {
+  max-height: 300px;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  max-width: 200px;
+  object-fit: cover;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.options {
+  padding: 1rem;
+  display: flex;
+  background-color: var(--main-darklg);
+}
+
+.options__left {
+  display: flex;
+}
+
+.options__right {
+  display: flex;
+  margin-left: auto;
+}
+
+.options__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  height: 50px;
+  border-radius: 5px;
+  color: var(--main-light);
+  font-size: 1.2rem;
+  width: 50px;
+  margin: 0 0.5rem;
+}
+
+.background__red {
+  background-color: #f6484a;
+}
+
+
+
+#video-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#showChat {
+  display: none;
+}
+
+.header__back {
+  display: none;
+  position: absolute;
+  font-size: 1.3rem;
+  top: 17px;
+  left: 28px;
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .main {
+    overflow: scroll;
+  }
+
+  .main__left {
+    width: 100%;
+    flex: 1;
+  }
+
+  #video-home {
+    width: 100%;
+    height: 85%;
+    overflow-y: hidden;
+  }
+
+  #showChat {
+    display: flex;
+  }
+}

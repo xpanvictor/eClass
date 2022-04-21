@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eClass test 1</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://use.fontawesome.com/03cac876b8.js"></script>
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script>
+      const roomId = "<%= roomId %>";
+    </script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <h3>Video Chat</h2>
+      </div>
+    </div>  
+    <div class="main">  
+    <div class="main__left">
+      <div class="videos__group">
+        <div id="video-home">
+
+        </div>
+      </div>
+      <div class="options">
+        <div class="options__left">
+          <div id="stopVideo" class="options__button">
+            <i class="fa fa-video-camera"></i>
+          </div>
+          <div id="muteButton" class="options__button">
+            <i class="fa fa-microphone"></i>
+          </div>
+        </div>
+        <div class="options__right">
+          <div id="inviteButton" class="options__button">
+            <i class="fa fa-user-plus"></i>
+          </div>
+          <div id="close" class="options__button" style="background-color: red;">
+            <i class="fa fa-times"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  </body>
+  <script src="script.js"></script>
+</html>
