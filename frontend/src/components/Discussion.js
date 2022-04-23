@@ -18,7 +18,7 @@ function Discussion() {
     }
   };
   return (
-    <div className="rounded-md bg-gradient-to-br from-[#0B0C0F] to-[#2A3555] md:min-w-[500px] p-5 pb-10 shadow-lg drop-shadow-lg h-[80vh] ">
+    <div className="rounded-md bg-gradient-to-br from-[#0B0C0F] to-[#2A3555] md:min-w-[500px] xl:block hidden p-5 pb-10 shadow-lg drop-shadow-lg h-[80vh] ">
       <div>
         <h1 className="text-center text-white">Discussion</h1>
       </div>
