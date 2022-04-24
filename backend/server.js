@@ -8,12 +8,27 @@ const io = require("socket.io")(server, {
     origin: '*'
   }
 });
-const { ExpressPeerServer } = require('peer')
 
+// Import database and connect
+const connect = require('./database/db')
+connect()
+
+// Express server
+const { ExpressPeerServer } = require('peer')
 const peerServer = ExpressPeerServer(server, {
     debug: true
 })
 
+// Setting up the graphql api graphql
+const { graphqlHTTP } = require('express-graphql')
+const schema = require('./api/schema')
+
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true
+}))
+
+// Public folder and view engine
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
@@ -41,7 +56,7 @@ io.on("connection", (socket) => {
         socket.broadcast.emit("user-left", id)
       })
     });
-  });
+});
   
 
 
