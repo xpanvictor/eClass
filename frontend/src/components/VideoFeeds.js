@@ -5,6 +5,7 @@ import {
   ArrowsExpandIcon,
   MicrophoneIcon,
   HandIcon,
+  ChatIcon,
 } from "@heroicons/react/solid";
 import { VolumeOffIcon, VideoCameraIcon } from "@heroicons/react/outline";
 function VideoFeeds() {
