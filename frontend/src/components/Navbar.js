@@ -1,116 +1,209 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import logo from "../assets/CompositeLayer.png";
 import { useLocation } from "react-router-dom";
-import { MenuIcon } from "@heroicons/react/solid";
 
+import { Disclosure, Menu, Popover, Transition } from "@headlessui/react";
+import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+const user = {
+  name: "Tom Cook",
+  email: "tom@example.com",
+  imageUrl:
+    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+};
+const navigation = [
+  { name: "Home", to: "/", current: true },
+  { name: "Assigned", to: "/assigned", current: false },
+  { name: "Classes", to: "/classes", current: false },
+  { name: "Dashboard", to: "/dashboard", current: false },
+];
+const userNavigation = [
+  { name: "Your Profile", to: "#" },
+  { name: "Settings", to: "#" },
+  { name: "Sign out", to: "#" },
+];
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 function Navbar() {
   const path = useLocation().pathname;
   const [open, setOpen] = useState(false);
   return (
-    <div className="flex items-center justify-between  text-white bg-transparent p-6">
-      <div className="relative">
-        <img src={logo} alt="" className="" />
-        {open && (
-          <div className="flex-col flex justify-evenly w-2/5 md:items-center md:hidden transition-all">
-            <Link
-              to="/"
-              className={
-                path === "/"
-                  ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-l-2"
-                  : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
-              }
-            >
-              Home
-            </Link>
-            <Link
-              to={"/assigned"}
-              className={
-                path === "/assigned"
-                  ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-l-2"
-                  : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
-              }
-            >
-              Assigned
-            </Link>
-            <Link
-              to={"/classes"}
-              className={
-                path === "/classes"
-                  ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-l-2"
-                  : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
-              }
-            >
-              Classes
-            </Link>
-            <Link
-              to={"/dashboard"}
-              className={
-                path === "/dashboard"
-                  ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-l-2"
-                  : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
-              }
-            >
-              Dashboard
-            </Link>
-          </div>
-        )}
-      </div>
-      <div className=" ">
-        <MenuIcon
-          onClick={() => setOpen(!open)}
-          className={
-            open
-              ? "md:hidden mb-48 p-1 rounded-full hover:bg-indigo-400 transition-colors duration-200"
-              : "md:hidden p-1 rounded-full hover:bg-indigo-400 transition-colors duration-200"
-          }
-          height={30}
-        />
-      </div>
+    <>
+      <div className="">
+        <Disclosure as="nav" className="py-4">
+          {({ open }) => (
+            <>
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16">
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <img src={logo} alt="Workflow" />
+                    </div>
+                    <div className="hidden md:block">
+                      <div className="ml-10 flex items-baseline space-x-4">
+                        {navigation.map((item) => (
+                          <Link
+                            key={item.name}
+                            to={item.to}
+                            className={classNames(
+                              item.current
+                                ? "bg-gray-900 text-white"
+                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                              "px-3 py-2 rounded-md text-sm font-medium"
+                            )}
+                            aria-current={item.current ? "page" : undefined}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="hidden md:block">
+                    <div className="ml-4 flex items-center md:ml-6">
+                      <button
+                        type="button"
+                        className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                      >
+                        <span className="sr-only">View notifications</span>
+                        <BellIcon className="h-6 w-6" aria-hidden="true" />
+                      </button>
 
-      <div className="md:flex hidden justify-evenly w-2/5 items-center">
-        <Link
-          to="/"
-          className={
-            path === "/"
-              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-t-2"
-              : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
-          }
-        >
-          Home
-        </Link>
-        <Link
-          to={"/assigned"}
-          className={
-            path === "/assigned"
-              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-t-2"
-              : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
-          }
-        >
-          Assigned
-        </Link>
-        <Link
-          to={"/classes"}
-          className={
-            path === "/classes"
-              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-t-2"
-              : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
-          }
-        >
-          Classes
-        </Link>
-        <Link
-          to={"/dashboard"}
-          className={
-            path === "/dashboard"
-              ? "hover:scale-125 transition-all p-3 active:bg-indigo-900 border-t-2"
-              : "hover:scale-125 transition-all p-3 active:bg-indigo-900"
-          }
-        >
-          Dashboard
-        </Link>
+                      {/* Profile dropdown */}
+                      {/* <Menu as="div" className="ml-3 relative">
+                        <div>
+                          <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                            <span className="sr-only">Open user menu</span>
+                            
+                          </Menu.Button>
+                        </div>
+                        <Transition
+                          as={Fragment}
+                          enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95"
+                          enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75"
+                          leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95"
+                        >
+                          <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            {userNavigation.map((item) => (
+                              <Menu.Item key={item.name}>
+                                {({ active }) => (
+                                  <Link
+                                    href={item.to}
+                                    className={classNames(
+                                      active ? "bg-gray-100" : "",
+                                      "block px-4 py-2 text-sm text-gray-700"
+                                    )}
+                                  >
+                                    {item.name}
+                                  </Link>
+                                )}
+                              </Menu.Item>
+                            ))}
+                          </Menu.Items>
+                        </Transition>
+                      </Menu> */}
+                      <img
+                        className="h-8 w-8 rounded-full"
+                        src={user.imageUrl}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="-mr-2 flex md:hidden">
+                    {/* Mobile menu button */}
+                    <Disclosure.Button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                      <span className="sr-only">Open main menu</span>
+                      {open ? (
+                        <XIcon className="block h-6 w-6" aria-hidden="true" />
+                      ) : (
+                        <MenuIcon
+                          className="block h-6 w-6"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </Disclosure.Button>
+                  </div>
+                </div>
+              </div>
+              <Popover className="relative bg-pink-700">
+                {open && (
+                  <div>
+                    <Popover.Panel
+                      static
+                      className="absolute z-10 bg-slate-600"
+                    >
+                      <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                        {navigation.map((item) => (
+                          <Link to={item.to}>
+                            <Disclosure.Button
+                              key={item.name}
+                              as="a"
+                              className={classNames(
+                                item.current
+                                  ? "bg-gray-900 text-white"
+                                  : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                "block px-3 py-2 rounded-md text-base font-medium"
+                              )}
+                              aria-current={item.current ? "page" : undefined}
+                            >
+                              {item.name}
+                            </Disclosure.Button>
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="pt-4 pb-3 border-t border-gray-700">
+                        <div className="flex items-center px-5">
+                          <div className="flex-shrink-0">
+                            <img
+                              className="h-10 w-10 rounded-full"
+                              src={user.imageUrl}
+                              alt=""
+                            />
+                          </div>
+                          <div className="ml-3">
+                            <div className="text-base font-medium leading-none text-white">
+                              {user.name}
+                            </div>
+                            <div className="text-sm font-medium leading-none text-gray-400">
+                              {user.email}
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            className="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                          >
+                            <span className="sr-only">View notifications</span>
+                            <BellIcon className="h-6 w-6" aria-hidden="true" />
+                          </button>
+                        </div>
+                        <div className="mt-3 px-2 space-y-1">
+                          {userNavigation.map((item) => (
+                            <Disclosure.Button
+                              key={item.name}
+                              as="a"
+                              to={item.to}
+                              className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                            >
+                              {item.name}
+                            </Disclosure.Button>
+                          ))}
+                        </div>
+                      </div>
+                      <img src="/solutions.jpg" alt="" />
+                    </Popover.Panel>
+                  </div>
+                )}
+              </Popover>
+            </>
+          )}
+        </Disclosure>
       </div>
-    </div>
+    </>
   );
 }
 
