@@ -63,3 +63,7 @@ io.on("connection", (socket) => {
 const PORT = process.env.PORT || 3001;
 
 server.listen(PORT, ()=>`App listening at port ${PORT}`)
+
+// process.on('unhandledRejection', (err)=>{
+//   console.log(err)
+// })

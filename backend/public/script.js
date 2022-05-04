@@ -98,7 +98,12 @@ stopVideo.addEventListener("click", () => {
   const enabled = myStream.getVideoTracks()[0].enabled;
   if (enabled) {
     myStream.getVideoTracks()[0].enabled = false;
-    html = `<span class="fa-stack fa-lg"><i class="fa fa-video-camera"></i></span>`;
+    html = `
+    <span class="fa-stack fa-2x">
+      <i class="fas fa-camera fa-stack-1x"></i>
+      <i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i>
+    </span>
+    `
     stopVideo.classList.toggle("background__red");
     stopVideo.innerHTML = html;
   } else {

@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
             required: [true, "Please provide the last_name"]
         }
     },
-    username: {type: String, unique: true},
+    username: {type: String, unique: true, index: 1},
     dob: {type: Date, required: true},
     email: {
         type: String,
@@ -23,13 +23,14 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         min: 6,
-        required: [true, "Please provide the password"]
+        required: [true, "Please provide the password"],
+        select: false
     },
-    createdAt: {type: Date, default: Date.now()}
+    createdAt: {type: Date, default: Date.now}
 })
 
 userSchema.pre('save', async function(next){
-    if (!this.isModified(password)){
+    if (!this.isModified('password')){
         next()
     }
     const salt = await bcrypt.genSalt(10)
