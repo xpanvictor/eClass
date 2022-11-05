@@ -13,7 +13,7 @@ const io = require("socket.io")(server, {
 const connect = require('./database/db')
 connect()
 
-// Express server
+// Express peer server
 const { ExpressPeerServer } = require('peer')
 const peerServer = ExpressPeerServer(server, {
     debug: true
@@ -64,6 +64,6 @@ const PORT = process.env.PORT || 3001;
 
 server.listen(PORT, ()=>`App listening at port ${PORT}`)
 
-// process.on('unhandledRejection', (err)=>{
-//   console.log(err)
-// })
+process.on('unhandledRejection', (err)=>{
+    console.log(err)
+})
